@@ -1,5 +1,5 @@
 import React , {useState, useEffect}from 'react';
-import {View, Text, StyleSheet, Button,Image, Dimensions, ScrollView} from 'react-native';
+import {View, Text, StyleSheet, Button,Image, Dimensions, ScrollView, SafeAreaView} from 'react-native';
 import BodyText from '../components/BodyText';
 import TitleText from '../components/TitleText';
 import MainButton from '../components/MainButton';
@@ -18,16 +18,12 @@ const GameOverScreen = props =>{
         };
     });
     return(
+        <SafeAreaView>
         <ScrollView>
         
         <View style={styles.screen}>
         <TitleText >Game is Over!</TitleText>
-        <View style={{...styles.imageContainer,...{
-            width: availableDeviceWidth * 0.7,
-            height: availableDeviceHeight * 0.7,
-            borderRadius: (availableDeviceWidth * 0.7)/2,
-            marginVertical: availableDeviceHeight / 30
-        }}}>
+        <View style={styles.imageContainer}>
             <Image 
                 fadeDuration={1000}
                 source={require('../assets/success.png')} 
@@ -45,6 +41,7 @@ const GameOverScreen = props =>{
         <MainButton onPress={props.onRestart}>New Game</MainButton>  
     </View>
         </ScrollView>
+        </SafeAreaView>
 
     );
 };
